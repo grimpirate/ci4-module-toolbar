@@ -16,7 +16,7 @@ class ComposerCollector extends BaseCollector
 
 	public function __construct()
 	{
-		exec("composer outdated -D -f json -d " . dirname(COMPOSER_PATH) . '/..', $output);
+		exec("composer outdated -D -A -f json -d " . dirname(COMPOSER_PATH) . '/..', $output);
 		$this->updates = json_decode(implode("", $output), true)['installed'];
 		$this->count = count($this->updates);
 	}
@@ -57,3 +57,4 @@ class ComposerCollector extends BaseCollector
 	}
 
 }
+
