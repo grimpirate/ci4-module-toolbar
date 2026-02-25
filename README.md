@@ -1,6 +1,8 @@
 # Toolbar
 A Composer Collector for CodeIgniter's debug toolbar that displays information about outdated packages.
 
+![Screenshot](https://raw.githubusercontent.com/grimpirate/ci4-module-toolbar/main/screenshot.png "Toolbar")
+
 ## Setup
 ~
 ```
