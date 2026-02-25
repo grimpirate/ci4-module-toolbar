@@ -26,9 +26,9 @@ class ComposerCollector extends BaseCollector
 		$table = new \CodeIgniter\View\Table();
 		$table
 			->setHeading([
-				'name' => lang('Collector.composer.name'),
-				'version' => lang('Collector.composer.version'),
-				'latest' => lang('Collector.composer.latest'),
+				'name' => lang('Collectors.composer.name'),
+				'version' => lang('Collectors.composer.version'),
+				'latest' => lang('Collectors.composer.latest'),
 			])
 			->setSyncRowsWithHeading(true);
 		return $table->generate($this->updates);
@@ -55,4 +55,5 @@ class ComposerCollector extends BaseCollector
 	{
 		return $this->count == 0;
 	}
+
 }
