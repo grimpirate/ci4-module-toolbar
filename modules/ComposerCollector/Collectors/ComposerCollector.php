@@ -4,7 +4,7 @@ namespace Modules\ComposerCollector\Collectors;
 
 use Modules\ComposerCollector\Config\ComposerCollector as ComposerCollectorConfig;
 
-use CodeIgniter\Debug\ComposerCollector\Collectors\BaseCollector;
+use CodeIgniter\Debug\Toolbar\Collectors\BaseCollector;
 
 class ComposerCollector extends BaseCollector
 {
