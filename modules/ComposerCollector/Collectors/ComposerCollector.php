@@ -67,7 +67,7 @@ class ComposerCollector extends BaseCollector
 
 	public function getTitleDetails(): string
 	{
-		return lang('Collectors.composer.' . ($this->count > 1 ? 'plural' : 'singular'), [
+		return lang('Collectors.composer.' . ($this->count == 1 ? 'singular' : 'plural'), [
 			'count' => $this->count,
 			'mtime' => (new Time())->setTimestamp(cache()->getMetadata($this->cacheKey)['mtime']),
 		]);
