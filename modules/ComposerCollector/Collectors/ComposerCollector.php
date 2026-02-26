@@ -15,7 +15,7 @@ class ComposerCollector extends BaseCollector
 
 	protected array $updates = [];
 	protected int $count = 0;
-	protected Time $mtime;
+	protected Time $mtime = new Time();
 
 	public function __construct()
 	{
@@ -29,7 +29,7 @@ class ComposerCollector extends BaseCollector
 			}, ARRAY_FILTER_USE_KEY), json_decode(implode("", $output), true)['installed']);
 		});
 		$this->count = count($this->updates);
-		$this->mtime = (new Time())->setTimestamp(cache()->getMetadata($config->cacheKey)['mtime']);
+		$this->mtime = $this->mtime->setTimestamp(cache()->getMetadata($config->cacheKey)['mtime']);
 	}
 
 	public function display(): string
