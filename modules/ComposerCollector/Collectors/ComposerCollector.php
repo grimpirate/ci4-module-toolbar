@@ -57,7 +57,7 @@ class ComposerCollector extends BaseCollector
 
 	public function icon(): string
 	{
-		return 'data:image/svg+xml;base64,' . base64_encode(lang('Collectors.composer.icon'));
+		return lang('Collectors.composer.icon');
 	}
 
 	public function getBadgeValue(): int
