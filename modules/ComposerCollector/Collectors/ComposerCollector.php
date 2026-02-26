@@ -57,10 +57,7 @@ class ComposerCollector extends BaseCollector
 
 	public function getTitleDetails(): string
 	{
-		return lang('Collectors.composer.detail', [
-			'count' => $this->count,
-			'mtime' => $this->mtime,
-		]);
+		return lang('Collectors.composer.detail', [$this->count, $this->mtime]);
 	}
 
 	public function isEmpty(): bool
