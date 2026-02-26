@@ -13,14 +13,15 @@ class ComposerCollector extends BaseCollector
 	protected $hasTabContent = true;
 	protected $hasVarData = false;
 
-	protected $updates = [];
-	protected $count = 0;
-	protected $cacheKey = 'composer_updates';
+	protected array $updates = [];
+	protected int $count = 0;
+	protected ComposerCollectorConfig $config;
 
 	public function __construct()
 	{
+		$this->config = config(ComposerCollectorConfig::class);
 		$this->title = lang('Collectors.composer.title');
-		$this->updates = cache()->remember($this->cacheKey, config(ComposerCollectorConfig::class)->timeToLive, function(){
+		$this->updates = cache()->remember($this->config->cacheKey, $this->config->timeToLive, function(){
 			exec("composer outdated -D -A -f json -d " . dirname(COMPOSER_PATH) . '/..', $output);
 			return array_map(function($data){
 				foreach([
@@ -69,7 +70,7 @@ class ComposerCollector extends BaseCollector
 	{
 		return lang('Collectors.composer.' . ($this->count == 1 ? 'singular' : 'plural'), [
 			'count' => $this->count,
-			'mtime' => (new Time())->setTimestamp(cache()->getMetadata($this->cacheKey)['mtime']),
+			'mtime' => (new Time())->setTimestamp(cache()->getMetadata($this->config->cacheKey)['mtime']),
 		]);
 	}
 

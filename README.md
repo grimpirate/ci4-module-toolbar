@@ -11,12 +11,15 @@ rm -rf ci4-module-toolbar
 ```
 .env
 ```
+Modules\ComposerCollector\Config\ComposerCollector.cacheKey='composer_updates';
 Modules\ComposerCollector\Config\ComposerCollector.timeToLive=60;
 OR
+composercollector.cacheKey='composer_updates';
 composercollector.timeToLive=60;
 ```
 modules/ComposerCollector/Config/ComposerCollector.php
 ```
+public string $cacheKey = 'composer_updates';
 public int $timeToLive = 60;
 ```
 modules/ComposerCollector/Config/Registrar.php
@@ -30,6 +33,7 @@ class Registrar
     public static function ComposerCollector(): array
     {
         return [
+            'cacheKey' => 'composer_updates',
             'timeToLive' => 60,
         ];
     }
