@@ -7,6 +7,6 @@ return [
         'name' => 'Package',
         'version' => 'Current',
         'latest' => 'Latest',
-        'detail' => '({count, plural, =1{# package}, other{# packages}} outdated as of {mtime})',
+        'detail' => '({count, plural, =1{# package} other{# packages}} outdated as of {mtime})',
     ],
 ];
