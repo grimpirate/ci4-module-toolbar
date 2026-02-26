@@ -6,8 +6,7 @@ return [
         'name' => 'Paquete',
         'version' => 'Actual',
         'latest' => 'Último',
-        'singular' => '({count} paquete desactualizado desde {mtime})',
-        'plural' => '({count} paquetes desactualizados desde {mtime})',
+        'detail' => 'detail' => '({count, plural, =1{# paquete desactualizado}, other{# paquetes desactualizados}} desde {mtime})',
     ],
 
 ];
