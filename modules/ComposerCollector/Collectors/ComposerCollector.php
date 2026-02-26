@@ -12,7 +12,6 @@ class ComposerCollector extends BaseCollector
 	protected $hasTimeline = false;
 	protected $hasTabContent = true;
 	protected $hasVarData = false;
-	protected $title = 'Composer';
 
 	protected $updates = [];
 	protected $count = 0;
@@ -20,6 +19,7 @@ class ComposerCollector extends BaseCollector
 
 	public function __construct()
 	{
+		$this->title = lang('Collectors.composer.title');
 		$this->updates = cache()->remember($this->cacheKey, config(ComposerCollectorConfig::class)->timeToLive, function(){
 			exec("composer outdated -D -A -f json -d " . dirname(COMPOSER_PATH) . '/..', $output);
 			return array_map(function($data){

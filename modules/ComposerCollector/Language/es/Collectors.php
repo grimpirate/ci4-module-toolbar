@@ -2,6 +2,7 @@
 
 return [
     'composer' => [
+        'title' => 'Composer',
         'name' => 'Paquete',
         'version' => 'Actual',
         'latest' => 'Último',
