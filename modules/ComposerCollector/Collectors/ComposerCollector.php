@@ -15,13 +15,13 @@ class ComposerCollector extends BaseCollector
 
 	protected array $updates = [];
 	protected int $count = 0;
-	protected ComposerCollectorConfig $config;
+	protected Time $mtime;
 
 	public function __construct()
 	{
-		$this->config = config(ComposerCollectorConfig::class);
+		$config = config(ComposerCollectorConfig::class);
 		$this->title = lang('Collectors.composer.title');
-		$this->updates = cache()->remember($this->config->cacheKey, $this->config->timeToLive, function(){
+		$this->updates = cache()->remember($config->cacheKey, $config->timeToLive, function(){
 			exec("composer outdated -D -A -f json -d " . dirname(COMPOSER_PATH) . '/..', $output);
 			return array_map(fn($data) => array_filter($data, fn($key) => match($key) {
 				'name', 'version', 'latest' => true,
@@ -29,6 +29,7 @@ class ComposerCollector extends BaseCollector
 			}, ARRAY_FILTER_USE_KEY), json_decode(implode("", $output), true)['installed']);
 		});
 		$this->count = count($this->updates);
+		$this->mtime = (new Time())->setTimestamp(cache()->getMetadata($config->cacheKey)['mtime']);
 	}
 
 	public function display(): string
@@ -58,7 +59,7 @@ class ComposerCollector extends BaseCollector
 	{
 		return lang('Collectors.composer.' . ($this->count == 1 ? 'singular' : 'plural'), [
 			'count' => $this->count,
-			'mtime' => (new Time())->setTimestamp(cache()->getMetadata($this->config->cacheKey)['mtime']),
+			'mtime' => $this->mtime,
 		]);
 	}
 
