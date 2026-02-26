@@ -4,7 +4,7 @@ namespace Modules\ComposerCollector\Config;
 
 class Registrar
 {
-    public static function ComposerCollector(): array
+    public static function Toolbar(): array
     {
         return [
             'collectors' => [
