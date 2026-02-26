@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\Toolbar\Collectors;
+namespace Modules\ComposerCollector\Collectors;
 
-use Modules\Toolbar\Config\Toolbar as ToolbarConfig;
+use Modules\ComposerCollector\Config\ComposerCollector as ComposerCollectorConfig;
 
-use CodeIgniter\Debug\Toolbar\Collectors\BaseCollector;
+use CodeIgniter\Debug\ComposerCollector\Collectors\BaseCollector;
 
 class ComposerCollector extends BaseCollector
 {
@@ -18,7 +18,7 @@ class ComposerCollector extends BaseCollector
 
 	public function __construct()
 	{
-		$this->updates = cache()->remember('composer_updates', config(ToolbarConfig::class)->timeToLive, function(){
+		$this->updates = cache()->remember('composer_updates', config(ComposerCollectorConfig::class)->timeToLive, function(){
 			exec("composer outdated -D -A -f json -d " . dirname(COMPOSER_PATH) . '/..', $output);
 			return json_decode(implode("", $output), true)['installed'];
 		});

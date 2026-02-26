@@ -1,14 +1,14 @@
 <?php
 
-namespace Modules\Toolbar\Config;
+namespace Modules\ComposerCollector\Config;
 
 class Registrar
 {
-    public static function Toolbar(): array
+    public static function ComposerCollector(): array
     {
         return [
             'collectors' => [
-                \Modules\Toolbar\Collectors\ComposerCollector::class,
+                \Modules\ComposerCollector\Collectors\ComposerCollector::class,
             ],
         ];
     }

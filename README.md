@@ -12,11 +12,11 @@ rm -rf ci4-module-toolbar
 ```
 .env
 ```
-Modules\Toolbar\Config\Toolbar.timeToLive=60;
+Modules\ComposerCollector\Config\ComposerCollector.timeToLive=60;
 OR
-toolbar.timeToLive=60;
+composercollector.timeToLive=60;
 ```
-modules/Toolbar/Config/Toolbar.php
+modules/ComposerCollector/Config/ComposerCollector.php
 ```
 public int $timeToLive = 60;
 ```
@@ -24,11 +24,11 @@ modules/AbuseIpdb/Config/Registrar.php
 ```
 <?php
 
-namespace Modules\Toolbar\Config;
+namespace Modules\ComposerCollector\Config;
 
 class Registrar
 {
-    public static function Toolbar(): array
+    public static function ComposerCollector(): array
     {
         return [
             'timeToLive' => 60,
@@ -39,6 +39,6 @@ class Registrar
 app/Config/Autoload.php
 ```
 public $psr4 = [
-    'Modules\Toolbar' => ROOTPATH . 'modules/Toolbar',
+    'Modules\ComposerCollector' => ROOTPATH . 'modules/ComposerCollector',
 ];
 ```
