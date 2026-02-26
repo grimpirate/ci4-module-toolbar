@@ -20,7 +20,7 @@ class ComposerCollector extends BaseCollector
 
 	public function __construct()
 	{
-		$this->updates = cache()->remember($cacheKey, config(ComposerCollectorConfig::class)->timeToLive, function(){
+		$this->updates = cache()->remember($this->cacheKey, config(ComposerCollectorConfig::class)->timeToLive, function(){
 			exec("composer outdated -D -A -f json -d " . dirname(COMPOSER_PATH) . '/..', $output);
 			return array_map(function($data){
 				foreach([
@@ -69,7 +69,7 @@ class ComposerCollector extends BaseCollector
 	{
 		return lang('Collectors.composer.' . ($this->count > 1 ? 'plural' : 'singular'), [
 			'count' => $this->count,
-			'mtime' => (new Time())->setTimestamp(cache()->getMetadata($cacheKey)['mtime']),
+			'mtime' => (new Time())->setTimestamp(cache()->getMetadata($this->cacheKey)['mtime']),
 		]);
 	}
 
