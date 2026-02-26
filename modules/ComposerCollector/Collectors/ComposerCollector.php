@@ -23,22 +23,12 @@ class ComposerCollector extends BaseCollector
 		$this->title = lang('Collectors.composer.title');
 		$this->updates = cache()->remember($this->config->cacheKey, $this->config->timeToLive, function(){
 			exec("composer outdated -D -A -f json -d " . dirname(COMPOSER_PATH) . '/..', $output);
-			return array_map(function($data){
-				foreach([
-					'direct-dependency',
-					'homepage',
-					'source',
-					'release-age',
-					'release-date',
-					'latest-status',
-					'latest-release-date',
-					'description',
-					'abandoned',
-				] as $key)
-					if(array_key_exists($key, $data))
-						unset($data[$key]);
-				return $data;
-			},json_decode(implode("", $output), true)['installed']);
+			return array_map(function($data) {
+				return array_filter($data, $key => match($key) {
+					'name', 'version', 'latest' => true,
+					default => false,
+				}, ARRAY_FILTER_USE_KEY);
+			}, json_decode(implode("", $output), true)['installed']);
 		});
 		$this->count = count($this->updates);
 	}
