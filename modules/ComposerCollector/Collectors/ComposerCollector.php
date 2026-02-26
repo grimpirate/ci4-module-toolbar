@@ -24,7 +24,7 @@ class ComposerCollector extends BaseCollector
 		$this->updates = cache()->remember($this->config->cacheKey, $this->config->timeToLive, function(){
 			exec("composer outdated -D -A -f json -d " . dirname(COMPOSER_PATH) . '/..', $output);
 			return array_map(function($data) {
-				return array_filter($data, $key => match($key) {
+				return array_filter($data, fn($key) => match($key) {
 					'name', 'version', 'latest' => true,
 					default => false,
 				}, ARRAY_FILTER_USE_KEY);
