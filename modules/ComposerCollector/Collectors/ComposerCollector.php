@@ -57,7 +57,7 @@ class ComposerCollector extends BaseCollector
 
 	public function getTitleDetails(): string
 	{
-		return lang('Collectors.composer.detail'), [
+		return lang('Collectors.composer.detail', [
 			'count' => $this->count,
 			'mtime' => $this->mtime,
 		]);
