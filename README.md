@@ -1,5 +1,5 @@
-# Toolbar
-A Composer Collector for CodeIgniter's debug toolbar that displays information about outdated packages.
+# Composer Collector
+A module for CodeIgniter's debug toolbar that displays information about outdated composer packages.
 
 ![Screenshot](https://raw.githubusercontent.com/grimpirate/ci4-module-toolbar/main/screenshot.png "Toolbar")
 
@@ -20,7 +20,7 @@ modules/ComposerCollector/Config/ComposerCollector.php
 ```
 public int $timeToLive = 60;
 ```
-modules/AbuseIpdb/Config/Registrar.php
+modules/ComposerCollector/Config/Registrar.php
 ```
 <?php
 
