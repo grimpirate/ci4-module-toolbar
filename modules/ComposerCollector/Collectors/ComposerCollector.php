@@ -35,13 +35,13 @@ class ComposerCollector extends BaseCollector
 	public function display(): string
 	{
 		$table = new \CodeIgniter\View\Table();
+		$table->setTemplate(['table_open' => '<table>']);
 		$table
 			->setHeading([
 				'name' => lang('Collectors.composer.name'),
 				'version' => lang('Collectors.composer.version'),
 				'latest' => lang('Collectors.composer.latest'),
 			])
-			->setTemplate(['table_open' => '<table>'])
 			->setSyncRowsWithHeading(true);
 		return $table->generate($this->updates);
 	}
@@ -67,4 +67,5 @@ class ComposerCollector extends BaseCollector
 	}
 
 }
+
 
