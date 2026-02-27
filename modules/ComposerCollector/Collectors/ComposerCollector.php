@@ -41,6 +41,7 @@ class ComposerCollector extends BaseCollector
 				'version' => lang('Collectors.composer.version'),
 				'latest' => lang('Collectors.composer.latest'),
 			])
+			->setTemplate(['table_open' => '<table>'])
 			->setSyncRowsWithHeading(true);
 		return $table->generate($this->updates);
 	}
