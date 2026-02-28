@@ -6,7 +6,7 @@
 ~
 ```
 git clone --depth 1 --branch main --single-branch https://github.com/grimpirate/ci4-module-toolbar
-mv ci4-module-toolbar/modules .
+mv ci4-module-toolbar/src app/modules/composercollector
 rm -rf ci4-module-toolbar
 ```
 .env
@@ -42,6 +42,6 @@ class Registrar
 app/Config/Autoload.php
 ```
 public $psr4 = [
-    'Modules\ComposerCollector' => ROOTPATH . 'modules/ComposerCollector',
+    'Modules\ComposerCollector' => ROOTPATH . 'modules/composercollector/src',
 ];
 ```
