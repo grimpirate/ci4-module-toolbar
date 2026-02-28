@@ -3,7 +3,7 @@
 ![Screenshot](https://raw.githubusercontent.com/grimpirate/ci4-module-toolbar/main/screenshot.png "Toolbar")
 
 ## Setup
->_
+&gt;_
 ```
 git clone --depth 1 --branch main --single-branch https://github.com/grimpirate/ci4-module-toolbar
 mv ci4-module-toolbar/src app/modules/composercollector
